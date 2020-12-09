@@ -15,47 +15,37 @@
       <h1 class="display-4 fw-normal">Hipster Check</h1>
       <p class="lead fw-normal">The application that shows how unique your taste in music really is.</p>
       <a class="btn btn-dark" href="\login">Log in to Spotify</a>
-      <img src="logo.png" alt="spotify-logo" class="logo">
+      <img src="https://raw.githubusercontent.com/jgirma/SpotifyApp/main/logo.png" alt="spotify-logo" class="logo">
+    </div>
+    <div id="loggedin">
+      <div id="user-profile">
+      </div>
+      <div id="oauth">
+      </div>
+      <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
+    </div>
+  <script id="user-profile-template" type="text/x-handlebars-template">
+    <h1>Logged in as {{display_name}}</h1>
+    <div class="media">
+      <div class="pull-left">
+        <img class="media-object" width="150" src="{{images.0.url}}" />
+      </div>
+      <div class="media-body">
+        <dl class="dl-horizontal">
+          <dt>Display name</dt><dd class="clearfix">{{display_name}}</dd>
+          <dt>Id</dt><dd>{{id}}</dd>
+          <dt>Email</dt><dd>{{email}}</dd>
+          <dt>Spotify URI</dt><dd><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></dd>
+          <dt>Link</dt><dd><a href="{{href}}">{{href}}</a></dd>
+          <dt>Profile Image</dt><dd class="clearfix"><a href="{{images.0.url}}">{{images.0.url}}</a></dd>
+          <dt>Country</dt><dd>{{country}}</dd>
+        </dl>
+      </div>
     </div>
   </div>
 
 
-  <!-- Code for the footnote -->
-  <!-- <div class="container-fluid text-center footnote-div bgd-white">
-    <span class="text-muted">
-      <a class="footer-link" href="https://www.linkedin.com/">LinkedIn</a>
-      <a class="footer-link" href="https://twitter.com/">Github</a>
-      <a class="footer-link" href="https://www.appbrewery.co/">Website</a>
-      <p>© 2020 Jonathan Girma.</p>
-    </span>
-  </div> -->
 
-
-  <div id="loggedin">
-    <div id="user-profile">
-    </div>
-    <div id="oauth">
-    </div>
-    <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
-  </div>
-<script id="user-profile-template" type="text/x-handlebars-template">
-  <h1>Logged in as {{display_name}}</h1>
-  <div class="media">
-    <div class="pull-left">
-      <img class="media-object" width="150" src="{{images.0.url}}" />
-    </div>
-    <div class="media-body">
-      <dl class="dl-horizontal">
-        <dt>Display name</dt><dd class="clearfix">{{display_name}}</dd>
-        <dt>Id</dt><dd>{{id}}</dd>
-        <dt>Email</dt><dd>{{email}}</dd>
-        <dt>Spotify URI</dt><dd><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></dd>
-        <dt>Link</dt><dd><a href="{{href}}">{{href}}</a></dd>
-        <dt>Profile Image</dt><dd class="clearfix"><a href="{{images.0.url}}">{{images.0.url}}</a></dd>
-        <dt>Country</dt><dd>{{country}}</dd>
-      </dl>
-    </div>
-  </div>
 </script>
 
 <script id="oauth-template" type="text/x-handlebars-template">
@@ -111,6 +101,7 @@
         });
 
         $.ajax({
+          // ENDPOINT THIS IS IMPORTANT!!!!
             url: 'https://api.spotify.com/v1/me',
             headers: {
               'Authorization': 'Bearer ' + access_token
@@ -145,5 +136,16 @@
     }
   })();
 </script>
+
+<!-- Code for the footnote -->
+<div class="container-fluid text-center footnote-div bgd-white">
+  <span class="text-muted">
+    <a class="footer-link" href="https://www.linkedin.com/">LinkedIn</a>
+    <a class="footer-link" href="https://twitter.com/">Github</a>
+    <a class="footer-link" href="https://www.appbrewery.co/">Website</a>
+    <p>© 2020 Jonathan Girma.</p>
+  </span>
+</div>
+
 </body>
 </html>
