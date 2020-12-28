@@ -1,11 +1,8 @@
 import React from "react";
 import "./Player.css";
-
 const Player = props => {
   const backgroundStyles = {
-    backgroundImage:`url(${
-      props.item.album.images[0].url
-    })`,
+    backgroundImage:`url(${props.item.album.images[0].url})`,
   };
 
   const progressBarStyles = {
@@ -16,7 +13,7 @@ const Player = props => {
     <div className="App">
       <div className="main-wrapper">
         <div className="now-playing__img">
-          <img src={props.item.album.images[0].url} alt="" />
+          <img alt="cool-pic" src={props.item.album.images[0].url} />
         </div>
         <div className="now-playing__side">
           <div className="now-playing__name">{props.item.name}</div>
@@ -27,7 +24,10 @@ const Player = props => {
             {props.is_playing ? "Playing" : "Paused"}
           </div>
           <div className="progress">
-            <div className="progress__bar" style={progressBarStyles} />
+            <div
+              className="progress__bar"
+              style={progressBarStyles}
+            />
           </div>
         </div>
         <div className="background" style={backgroundStyles} />{" "}
@@ -35,5 +35,4 @@ const Player = props => {
     </div>
   );
 }
-
 export default Player;
